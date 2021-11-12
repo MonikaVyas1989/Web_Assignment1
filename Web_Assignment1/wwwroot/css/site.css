@@ -1,11 +1,38 @@
 ﻿body {
     margin: 0;
     padding: 0;
+} 
+.div-Container{
+    display:flex;
+    flex-flow:column;
+    text-align:center;
+}
+.div-Container>*{
+    padding:5px;
+    margin:5px;
+    flex: 1 100%;
+
 }
 
-.navbar {
+main{
+  
+    text-align:left;
+    background-color:ActiveBorder; 
+}
+footer {
+   
+    background-color: antiquewhite;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 40px;
+  
+}
+
+.navbar,.navbar-logo{
     position: relative;
-    background-color: papayawhip;
+    background-color:antiquewhite;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -19,20 +46,11 @@ ul {
 
 a {
     text-decoration: none;
-    color: black;
+    color: blue;
     font-size: 16px;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     padding: 5px 15px;
     opacity: 0.7;
-}
+} 
 
-li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-footer{
-    display:flex;
-    flex-direction:row;
-    align-items:flex-start;
-}
+
+
