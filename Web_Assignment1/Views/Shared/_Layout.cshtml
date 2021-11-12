@@ -3,11 +3,46 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title - MyWeb_Assignment</title>
+   <link rel="stylesheet" href="~/css/site.css" />
+   <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap-grid.css" />
+
 </head>
 <body>
-    <div>
-        @RenderBody()
+
+    <header> 
+        <nav class="navbar">
+            <div class="Container">
+                <a class="navbar-logo" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="navbar-link">
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Projects">Projects</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <div class="Container">
+        <main>
+
+            @RenderBody()
+
+        </main>
     </div>
+    <footer>
+        <div class="Container">
+            &#169MonikaVyas
+        </div>
+    </footer>
+
 </body>
 </html>
