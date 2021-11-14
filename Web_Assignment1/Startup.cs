@@ -41,9 +41,15 @@ namespace Web_Assignment1
                     name: "Default",
                     pattern:"{Controller=Home}/{action=Index}/{id?}");
 
+                //endpoints.MapControllerRoute(
+                //   name: "Default",
+                //   pattern: "{Controller=Home}/{action=About}/{id?}");
+
                 endpoints.MapControllerRoute(
-                   name: "Default",
-                   pattern: "{Controller=Home}/{action=About}/{id?}");
+                    name: "Doctor",
+                    pattern: "/FeverCheck",
+                    defaults: new { Controller = "Doctor", action = "FeverCheck" }
+                    );
 
             });
         }
