@@ -20,6 +20,14 @@ namespace Web_Assignment1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+            services.AddSession(option =>
+            {
+                option.IdleTimeout = TimeSpan.FromMinutes(10);
+                option.Cookie.HttpOnly = true;
+                option.Cookie.IsEssential = true;
+
+            });
             services.AddMvc();
             services.AddControllersWithViews();
         }
@@ -34,6 +42,7 @@ namespace Web_Assignment1
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
@@ -41,9 +50,7 @@ namespace Web_Assignment1
                     name: "Default",
                     pattern:"{Controller=Home}/{action=Index}/{id?}");
 
-                //endpoints.MapControllerRoute(
-                //   name: "Default",
-                //   pattern: "{Controller=Home}/{action=About}/{id?}");
+               
 
                 endpoints.MapControllerRoute(
                     name: "Doctor",
@@ -51,6 +58,11 @@ namespace Web_Assignment1
                     defaults: new { Controller = "Doctor", action = "FeverCheck" }
                     );
 
+                endpoints.MapControllerRoute(
+                   name: "Game",
+                   pattern: "/NumberGuessingGame",
+                   defaults: new { Controller = "Game", action = "NumberGuessingGame" }
+                   );
             });
         }
     }
