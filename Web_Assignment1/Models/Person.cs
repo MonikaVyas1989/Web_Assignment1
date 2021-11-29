@@ -8,18 +8,14 @@ namespace Web_Assignment1.Models
 {
     public class Person
     {
-        //private readonly int _id;
-        //public int ID { get { return _id; } }
+       
         public string Name { get; set; }
         public string Phone { get; set; }
         public string City { get; set; }
 
-        //private static int _idCounter;
-
+       
         private static readonly List<Person> PeopleList = new List<Person>();
-        //private static List<CreatePersonViewModel> PersonList = new List<CreatePersonViewModel>();
-        //public List<Person> PeopleList1 => PeopleList;//{get{return PeopleList;} }
-
+        
         public Person()
         {
             
@@ -35,7 +31,6 @@ namespace Web_Assignment1.Models
         {
             Person newPerson = new Person(name, phone, city);
             PeopleList.Add(newPerson);
-            //_idCounter++;
             return newPerson;
         }
         public List<Person> GetPeople()
@@ -43,26 +38,15 @@ namespace Web_Assignment1.Models
             return PeopleList;
         }
 
-        //public CreatePersonViewModel CreatePerson(string name, string phone, string city)
-        //{
-        //    CreatePersonViewModel newPerson = new CreatePersonViewModel(_idCounter, name, phone, city);
-
-        //    PersonList.Add(newPerson);
-        //    _idCounter++;
-        //    return newPerson;
-        //}
-        // public List<CreatePersonViewModel> GetPeople()
-        //{
-
-        //    return PersonList;
-        //}
+       
 
         public void People()
         {
             Person person = new Person();
-            person.CreatePerson("Lokendra", "+4612234", "Khadka");
-            person.CreatePerson("Karl", "+464576468", "Andersson");
-            
+            person.CreatePerson("Lokendra", "+461223415112", "Lund");
+            person.CreatePerson("Karl", "+464576468456", "Halmstad");
+            person.CreatePerson("David", "+464576468211", "Göteborg");
+            person.CreatePerson("Hammad", "+464512345612", "Helsingborg");
         }
         public Person GetPeople(string name)
         {
@@ -72,11 +56,11 @@ namespace Web_Assignment1.Models
 
         }
 
-        //public bool RemovePerson(Person per)
-        //{
-        //    bool delete = PeopleList.Remove(per);
-        //    return delete;
-        //}
+        public bool RemovePerson(Person per)
+        {
+            bool delete = PeopleList.Remove(per);
+            return delete;
+        }
 
 
     }

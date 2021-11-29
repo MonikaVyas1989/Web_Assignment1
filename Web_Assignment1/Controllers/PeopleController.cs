@@ -14,7 +14,7 @@ namespace Web_Assignment1.Controllers
         {
 
             Person person = new Person();
-            PeopleViewModel people = new PeopleViewModel(); //{PeopleList=person.GetPeople() };
+            PeopleViewModel people = new PeopleViewModel(); 
             if (people.PeopleList.Count == 0 || people.PeopleList == null)
             {
                 person.People();
@@ -24,6 +24,7 @@ namespace Web_Assignment1.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult PeopleCreation(CreatePersonViewModel createPerson)
         {
             Person person = new Person();
@@ -43,61 +44,50 @@ namespace Web_Assignment1.Controllers
                 ViewBag.Message = "You have added one new person Successfully";
                 return View("PeopleIndex", peopleView);
             }
-            ViewBag.Message = "You are failed to add new Person" + ModelState.Values;
-
+            ViewBag.Message = "You are failed to add new Person";
+            peopleView.PeopleList = person.GetPeople();
 
             return View("PeopleIndex", peopleView);
 
         }
 
         [HttpPost]
-        public IActionResult PeopleSearch(PeopleViewModel peopleView)
+        public IActionResult PeopleSearch(PeopleViewModel people)
         {
             Person person = new Person();
-            peopleView.PeopleList.Clear();
+            
 
 
             foreach (Person per in person.GetPeople())
             {
 
-                if (per.Name.ToLower() == peopleView.Namestring.ToLower())
+                if (per.Name.ToLower() == people.Namestring.ToLower())
                 {
-                    peopleView.PeopleList.Add(per);
+                    people.PeopleList.Clear();
+                    people.PeopleList.Add(per);
                 }
-                //        //        //This is searching with match city value
-                //        //        //if(per.City.ToLower() == peopleView.Citystring.ToLower())
-                //        //        //{
-                //        //        //    peopleView.PeopleList.Add(per);
-                //        //        //}
 
-                //        //    }
+                //This is searching with match city value
+                //if(per.City.ToLower() == peopleView.Citystring.ToLower())
+                //{
+                      //people.PeopleList.Clear();
+                //    peopleView.PeopleList.Add(per);
+                //}
 
             }
-            return View("PeopleIndex", peopleView);
+            
+          
+            return View("PeopleIndex",people);
         }
-        public IActionResult DeletePerson(string nm)
+        public IActionResult DeletePerson(string p)
         {
             Person person = new Person();
-            Person p = person.GetPeople(nm);
-            //person.RemovePerson(p);
+            Person per = person.GetPeople(p);
+            
 
             PeopleViewModel people1 = new PeopleViewModel();
-            people1.RemovePerson(p);
+            person.RemovePerson(per);
             people1.PeopleList = person.GetPeople();
-            //person = people1.PeopleList.Find(c => c.Name == name);
-            //people1.PeopleList.Remove(person);
-            //person.PeopleList1.Remove(person);
-            //foreach (var i in people1.PeopleList)
-            //{
-            //    if (i == person)
-            //    {
-            //        people1.PeopleList.Remove(i);
-            //    }
-            //}
-            //if (people1.PeopleList.Contains(person))
-            //{
-            //    people1.PeopleList.Remove(person);
-            //}
 
             return View("PeopleIndex",people1);
 

@@ -11,9 +11,10 @@ namespace Web_Assignment1.ViewModels
         public  List<Person> PeopleList { get; set; }
 
         public string Namestring { get; set; }
+
         //public string Citystring { get; set; }
 
-        //public string DeleteString { get; set; }
+        
         public PeopleViewModel()
         {
             PeopleList = new List<Person>();
