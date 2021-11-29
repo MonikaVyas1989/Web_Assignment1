@@ -1,0 +1,71 @@
+﻿@using Web_Assignment1.ViewModels;
+@model PeopleViewModel;
+
+@{
+    ViewData["Title"] = "PeopleIndex";
+} 
+
+<h1>PeopleIndex</h1>
+<div>
+    <div class="container">
+        <form name="create-person" asp-controller="People" asp-action="PeopleSearch" method="post">
+            <div>
+                <label asp-for="Namestring">Enter Name:</label>
+                <input asp-for="Namestring" required /><br /><br />
+                @*Input City to get data with match City
+            <label asp-for="Citystring">Enter City:</label>
+        <input asp-for="Citystring" required /><br /><br />*@
+            </div>
+            <div>
+                <input type="submit" value="Search Person" />
+            </div>
+        </form>
+
+    </div><br />
+    <div class="container">
+        <form name="create-person" asp-controller="People" asp-action="PeopleCreation" method="post">
+            <div>
+                <label asp-for="Name">Enter Name:</label>
+                <input asp-for="Name" required/><br /><br />
+                <label asp-for="Phone">Enter Phone:</label>
+                <input asp-for="Phone" required/><br /><br />
+                <label asp-for="City">Enter City:</label>
+                <input asp-for="City" required/><br /><br />
+            </div>
+            <div>
+                <input type="submit" value="Create Person" />
+            </div>
+            @if (ViewBag.Message != null)
+            {
+                <p>@ViewBag.Message</p>
+            }
+
+        </form>
+    </div>
+    <br />
+    <table border="1">
+        <thead>
+            <tr>
+                @*<th>Id</th>*@
+                <th>Name</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Click To Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var people in Model.PeopleList)
+            {
+            <tr>
+                @*<td>@people.ID</td>*@
+                <td>@people.Name</td>
+                <td>@people.Phone</td>
+                <td>@people.City</td>
+                <td><a href="DeletePerson" onclick="Location.href = '@Url.Action("DeletePerson", "People",new { p = people.Name })'">Delete</a></td>
+               
+            </tr>
+            } 
+        </tbody>
+
+    </table>
+</div>

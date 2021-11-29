@@ -63,6 +63,12 @@ namespace Web_Assignment1
                    pattern: "/NumberGuessingGame",
                    defaults: new { Controller = "Game", action = "NumberGuessingGame" }
                    );
+
+                endpoints.MapControllerRoute(
+                   name: "People",
+                   pattern: "/PeopleIndex",
+                   defaults: new { Controller = "People", action = "PeopleIndex" }
+                   );
             });
         }
     }

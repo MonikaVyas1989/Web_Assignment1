@@ -26,10 +26,13 @@
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Projects">Projects</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Doctor" asp-action="index">FeverCheck</a>
+                                <a class="nav-link" asp-area="" asp-controller="Doctor" asp-action="FeverCheck">FeverCheck</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Game" asp-action="NumberGuessingGame">NumberGuessingGame</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="People" asp-action="PeopleIndex">People</a>
                             </li>
                         </ul>
                     </div>
@@ -45,8 +48,8 @@
             </main>
         </div>
         <footer>
-            <div class="Container"> 
-                @DateTime.Now.ToShortDateString() *MonikaVyas*
+            <div class="Container">
+                @DateTime.Now.ToShortDateString() *&#169MonikaVyas*
             </div>
         </footer>
     </div>
