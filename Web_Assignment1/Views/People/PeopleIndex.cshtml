@@ -1,5 +1,5 @@
 ﻿@using Web_Assignment1.ViewModels;
-@model PeopleViewModel;
+@model PeopleViewModel
 
 @{
     ViewData["Title"] = "PeopleIndex";
@@ -10,13 +10,13 @@
 <div class="container">
     <div>
         <form asp-controller="People" asp-action="PeopleSearch" method="post">
-            
+
             <div>
                 <label asp-for="Namestring">Enter Name:</label>
                 <input asp-for="Namestring" required /><br /><br />
                 @*Input City to get data with match City
-                <label asp-for="Citystring">Enter City:</label>
-            <input asp-for="Citystring" required /><br /><br />*@
+                        <label asp-for="Citystring">Enter City:</label>
+                    <input asp-for="Citystring" required /><br /><br />*@
             </div>
             <div>
                 <input type="submit" value="Search Person" />
@@ -48,28 +48,34 @@
         </form>
     </div>
     <br />
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>City</th>
-                <th>Click To Remove</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var people in Model.PeopleList)
-            {
-            <tr>
-                <td>@people.Name</td>
-                <td>@people.Phone</td>
-                <td>@people.City</td>
-                
-              @* <td>@Html.ActionLink("Delete","DeletePerson", new { p = people.Name })</td>*@
-                <td><input type="button" value="Delete" onclick="location.href = '@Url.Action("DeletePerson","People",new { p = people.Name })'" /></td>
-            </tr>
-            } 
-        </tbody>
+    @*<table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Click To Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var people in Model.PeopleList)
+                {
+                <tr>
+                    <td>@people.Name</td>
+                    <td>@people.Phone</td>
+                    <td>@people.City</td>
 
-    </table>
+                  <td>@Html.ActionLink("Delete","DeletePerson", new { p = people.Name })</td>
+                    <td><input type="button" value="Delete" onclick="location.href = '@Url.Action("DeletePerson","People",new { p = people.Name })'" /></td>
+                </tr>
+                }
+            </tbody>
+
+        </table>*@
+
+<div class="container">
+   
+   <partial name="_PeoplePartialView" model=Model.PeopleList />
+</div>
+
 </div>

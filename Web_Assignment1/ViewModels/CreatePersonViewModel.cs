@@ -26,20 +26,7 @@ namespace Web_Assignment1.ViewModels
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Please enter your City."), MaxLength(25), MinLength(3)]
         public string City { get; set; }
-        //private readonly int _id;
-        //public int ID { get { return _id; } }
-
-        //public CreatePersonViewModel()
-        //{
-
-        //}
-        //public CreatePersonViewModel(int id,string name,string phone,string city)
-        //{
-        //    _id = id;
-        //    Name = name;
-        //    Phone = phone;
-        //    City = city;
-        //}
+        
 
         
     }

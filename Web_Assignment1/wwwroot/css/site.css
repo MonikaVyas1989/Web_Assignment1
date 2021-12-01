@@ -1,16 +1,19 @@
 ﻿body {
     margin: 0;
     padding: 0;
-} 
-.div-Container{
-    display:flex;
-    flex-flow:column;
-    text-align:center;
+}
+.div-Container {
+    position: relative;
+    min-height:100%;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
 }
 .div-Container>*{
     padding:5px;
     margin:5px;
     flex: 1 100%;
+
 
 }
 
@@ -27,6 +30,7 @@ footer {
     width: 100%;
     white-space: nowrap;
     line-height: 20px;
+    text-align:center;
   
 }
 

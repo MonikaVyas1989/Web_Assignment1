@@ -4,13 +4,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - MyWeb_Assignment</title>
-   <link rel="stylesheet" href="~/css/site.css" />
-  
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
 
 </head>
 <body>
-    <div class="div-Container">
-        <header>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
             <nav class="navbar">
                 <div class="Container">
                     <a class="navbar-logo" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -38,20 +40,26 @@
                     </div>
                 </div>
             </nav>
-
-        </header>
-        <div class="Container">
-            <main role="main">
-
-                @RenderBody()
-
-            </main>
         </div>
-        <footer>
-            <div class="Container">
-                @DateTime.Now.ToShortDateString() *&#169MonikaVyas*
-            </div>
+
+    </div>
+    <div class="container body-content">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <div class="container">
+
+        <hr />
+        <footer class="footer fixed-bottom">
+
+            @DateTime.Now.ToShortDateString() *&#169MonikaVyas*
+
         </footer>
     </div>
+    
+    
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
 </body>
+
 </html>

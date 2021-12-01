@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Web_Assignment1.Models.Person>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"> Name</div>
+        <div class="col-md-3">Phone</div>
+        <div class="col-md-3">City</div>
+        <div class="col-md-3"> Click To Remove</div>
+
+    </div>
+
+    @foreach (var people in Model)
+    {
+        <div class="row">
+            <div class="col-md-3">
+                @people.Name
+            </div>
+            <div class="col-md-3">
+                @people.Phone
+            </div>
+            <div class="col-md-3">
+                @people.City
+            </div>
+
+            <div class="col-md-3">
+
+                <input class="btn btn-danger" type="button" value="Delete" onclick="location.href = '@Url.Action("DeletePerson","People",new { p = people.Name })'" />
+            </div>
+        </div>
+    }
+</div>

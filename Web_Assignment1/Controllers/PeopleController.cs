@@ -12,16 +12,18 @@ namespace Web_Assignment1.Controllers
     {
         public IActionResult PeopleIndex()
         {
-
             Person person = new Person();
-            PeopleViewModel people = new PeopleViewModel(); 
+            PeopleViewModel people = new PeopleViewModel();
             if (people.PeopleList.Count == 0 || people.PeopleList == null)
             {
                 person.People();
             }
             people.PeopleList = person.GetPeople();
             return View(people);
+
+            
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -92,5 +94,6 @@ namespace Web_Assignment1.Controllers
             return View("PeopleIndex",people1);
 
         }
+       
     }
 }
