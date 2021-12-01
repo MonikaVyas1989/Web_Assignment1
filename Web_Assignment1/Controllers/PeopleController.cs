@@ -20,8 +20,8 @@ namespace Web_Assignment1.Controllers
             }
             people.PeopleList = person.GetPeople();
             return View(people);
+            //return PartialView("_PersonPartialView", person); 
 
-            
         }
 
 

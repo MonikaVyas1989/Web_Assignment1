@@ -1,0 +1,21 @@
+﻿@using Web_Assignment1.Models
+@model Person
+
+
+   
+    <div class="row">
+        <div class="col-md-3">
+            @Model.Name
+        </div>
+        <div class="col-md-3">
+            @Model.Phone
+        </div>
+        <div class="col-md-3">
+            @Model.City
+        </div>
+
+        <div class="col-md-3">
+
+            <input class="btn btn-danger" type="button" value="Delete" onclick="location.href = '@Url.Action("DeletePerson","People",new { p = Model.Name })'" />
+        </div>
+    </div>

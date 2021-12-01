@@ -73,9 +73,23 @@
 
         </table>*@
 
-<div class="container">
-   
-   <partial name="_PeoplePartialView" model=Model.PeopleList />
-</div>
+    @*<div class="container">
+            <partial name="_PeoplePartialView" model=Model.PeopleList />
+        </div>*@
 
+    <div class="row">
+        <div class="col-md-3"> Name</div>
+        <div class="col-md-3">Phone</div>
+        <div class="col-md-3">City</div>
+        <div class="col-md-3"> Click To Remove</div>
+
+    </div>
+    @foreach (var item in Model.PeopleList)
+    {
+        <div class="container">
+
+            <partial name="_PersonPartialView" model="item" />
+        </div>
+    }
+   
 </div>
