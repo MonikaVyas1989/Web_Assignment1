@@ -15,10 +15,10 @@ namespace Web_Assignment1.Controllers
             People person = new People();
             PeopleViewModel people = new PeopleViewModel();
             people.PeopleList = person.GetPeople();
-            if (people.PeopleList.Count == 0 || people.PeopleList == null)
-            {
-                person.Person();
-            }
+            //if (people.PeopleList.Count == 0 || people.PeopleList == null)
+            //{
+            //    //person.Person();
+            //}
 
             return View(people);
             

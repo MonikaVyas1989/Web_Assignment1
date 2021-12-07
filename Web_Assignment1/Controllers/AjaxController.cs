@@ -10,7 +10,7 @@ namespace Web_Assignment1.Controllers
 {
     public class AjaxController : Controller
     {
-        
+
         public IActionResult Ajax()
         {
             return View();
@@ -19,44 +19,46 @@ namespace Web_Assignment1.Controllers
         [HttpGet]
         public ActionResult GetPerson()
         {
-           
-            People person = new People();
-            //List<Person> personList = person.GetPeople();
-            Person people = new Person(){personList=person.GetPeople() };
-            //PeopleViewModel model = new PeopleViewModel { PeopleList = person.GetPeople() };
+            People People = new People();
+            List<Person> personList = People.GetPeople();
 
-            
-
-            foreach (Person per in person.GetPeople())
-            {
-                //if (people.personList.Count < 0 && people.personList == null)
-                //{
-                //    person.Person();
-                //}
-                //people.personList.Add(per);
-                return PartialView("_PersonPartialView", model: per);
-                //people.personList.Add(per);
-            }
-            return PartialView("_PersonPartialView", people);
-
-
-       
-
+            return PartialView("_PeoplePartialView", personList);
 
         }
+
+
+
         [HttpPost]
         public ActionResult GetPersonByID(int id)
         {
-            People person = new People();
-            List<Person> peopleList = new List<Person>();
-            Person personDetail = person.GetPeople(id);
+            People people = new People();
+           
+            Person personDetail = people.GetPeople(id);
 
+           
+            return PartialView("_PersonPartialView", personDetail);
+
+        }
+
+        [HttpPost]
+        public ActionResult DeletePersonByID(int id)
+        {
+            People people = new People();
+           
+            Person personDetail = people.GetPeople(id);
+            bool success = false;
             if (personDetail != null)
             {
-                peopleList.Add(personDetail);
+               success= people.GetPeople().Remove(personDetail);
             }
 
-            return PartialView("_PersonPartialView",peopleList);
+            if (success)
+            {
+                return StatusCode(200);
+            }
+            return StatusCode(404);
+           
+
 
         }
     }
