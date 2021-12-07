@@ -12,15 +12,16 @@ namespace Web_Assignment1.Controllers
     {
         public IActionResult PeopleIndex()
         {
-            Person person = new Person();
+            People person = new People();
             PeopleViewModel people = new PeopleViewModel();
+            people.PeopleList = person.GetPeople();
             if (people.PeopleList.Count == 0 || people.PeopleList == null)
             {
-                person.People();
+                person.Person();
             }
-            people.PeopleList = person.GetPeople();
+
             return View(people);
-            //return PartialView("_PersonPartialView", person); 
+            
 
         }
 
@@ -29,7 +30,7 @@ namespace Web_Assignment1.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult PeopleCreation(CreatePersonViewModel createPerson)
         {
-            Person person = new Person();
+            People person = new People();
             PeopleViewModel peopleView = new PeopleViewModel();
 
             if (ModelState.IsValid)
@@ -56,7 +57,7 @@ namespace Web_Assignment1.Controllers
         [HttpPost]
         public IActionResult PeopleSearch(PeopleViewModel people)
         {
-            Person person = new Person();
+            People person = new People();
             
 
 
@@ -83,7 +84,7 @@ namespace Web_Assignment1.Controllers
         }
         public IActionResult DeletePerson(string p)
         {
-            Person person = new Person();
+            People person = new People();
             Person per = person.GetPeople(p);
             
 

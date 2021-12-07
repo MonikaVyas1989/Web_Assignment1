@@ -69,6 +69,12 @@ namespace Web_Assignment1
                    pattern: "/PeopleIndex",
                    defaults: new { Controller = "People", action = "PeopleIndex" }
                    );
+
+                //endpoints.MapControllerRoute(
+                //   name: "Ajax",
+                //   pattern: "/Ajax",
+                //   defaults: new { Controller = "Ajax", action = "Ajax" }
+                //   );
             });
         }
     }

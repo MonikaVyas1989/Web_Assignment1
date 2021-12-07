@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Ajax";
+}
+
+<h2>Jquery with Ajax</h2>
+<div>
+    <input type="button" class="btn-dark" onclick="getPeople()" value="People" /><br /><br />
+
+
+    <label for="PersonID">Enter Person ID for Details or Delete</label>
+    <input id="PersonIdInput" type="number" />
+    <input type="button" class="btn-dark" onclick="getPersonByID()" value="Details" />
+    <input type="button" class="btn-danger" onclick="deletePersonByID()" value="Delete" />
+</div>
+
+
+
+
+<div id="PersonList">
+
+
+</div>  
