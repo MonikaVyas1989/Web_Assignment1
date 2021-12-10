@@ -7,8 +7,9 @@
 
 
 <h1>PeopleIndex</h1>
-<div class="container">
-    <div>
+<div class="container-md">
+    <div class="accordion-button"><a asp-controller="People" asp-action="PeopleView">People from Database</a></div><br />
+    <div class="accordion-item">
         <form asp-controller="People" asp-action="PeopleSearch" method="post">
 
             <div>
@@ -24,9 +25,9 @@
         </form>
 
     </div><br />
-    <div>
+    <div class="accordion-item">
         <form name="create-person" asp-controller="People" asp-action="PeopleCreation" method="post">
-            <div>
+            <div >
                 <label asp-for="Name">Enter Name:</label>
                 <input asp-for="Name" />
                 <span style="color:red" asp-validation-for="Name"></span> <br /><br />

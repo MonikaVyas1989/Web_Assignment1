@@ -5,11 +5,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using Web_Assignment1.Models;
 using Web_Assignment1.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using Web_Assignment1.Data;
 
 namespace Web_Assignment1.Controllers
 {
     public class PeopleController : Controller
     {
+        private readonly PeopleDbContext dbContext;
+
+        public PeopleController(PeopleDbContext context)
+        {
+            dbContext = context;
+        }
+
+        public IActionResult PeopleView()
+        {
+            List<Person> List = dbContext.Persons.ToList();
+            return View(List);
+        }
+
+        public IActionResult CreatePerson()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreatePerson(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                dbContext.Persons.Add(person);
+                dbContext.SaveChanges();
+                return RedirectToAction("PeopleView");
+            }
+            return View();
+        }
         public IActionResult PeopleIndex()
         {
             People person = new People();

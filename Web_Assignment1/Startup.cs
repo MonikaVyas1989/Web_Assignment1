@@ -8,13 +8,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Web_Assignment1.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web_Assignment1
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
-     
+        public IConfiguration Configuration { get; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -28,7 +35,10 @@ namespace Web_Assignment1
                 option.Cookie.IsEssential = true;
 
             });
-            services.AddMvc();
+
+            services.AddDbContext<PeopleDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddMvc();;
             services.AddControllersWithViews();
         }
 

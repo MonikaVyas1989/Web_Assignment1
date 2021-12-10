@@ -1,0 +1,27 @@
+﻿@model Web_Assignment1.Models.Person;
+@{
+    ViewData["Title"] = "CreatePerson";
+}
+
+<h1>CreatePerson</h1>
+
+<div class="accordion-item">
+    <form asp-action="CreatePerson">
+        <div>
+            <label asp-for="Name">Enter Name:</label>
+            <input asp-for="Name" />
+            <span style="color:red" asp-validation-for="Name"></span> <br /><br />
+            <label asp-for="Phone">Enter Phone:</label>
+            <input asp-for="Phone" />
+            <span style="color:red" asp-validation-for="Phone"></span><br /><br />
+            <label asp-for="City">Enter City:</label>
+            <input asp-for="City" />
+            <span style="color:red" asp-validation-for="City"></span><br /><br />
+        </div>
+        <div>
+            <input type="submit" value="Create Person" />
+        </div>
+      
+
+    </form>
+</div>
