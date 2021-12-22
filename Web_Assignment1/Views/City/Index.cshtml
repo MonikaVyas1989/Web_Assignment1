@@ -1,0 +1,39 @@
+﻿@using Web_Assignment1.ViewModels
+@model IEnumerable<PersonModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+    <div class="accordion-item">
+        <table border="1" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    @*<th>CityName</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var people in Model)
+                {
+                    <tr>
+                        <td>@people.PersonId</td>
+                        <td>@people.Name</td>
+                        <td>@people.Phone</td>
+                        <td>@people.CityId</td>
+                        @*<td>@people.City.Name</td>*@
+
+
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>

@@ -1,10 +1,15 @@
-﻿@model IEnumerable<Person>
+﻿@using Web_Assignment1.Models
+@model IEnumerable<PersonModel>
 @{
     ViewData["Title"] = "PeopleView";
 }
 
 <h1>PeopleView</h1>
 <div class="accordion-button"><a asp-action="CreatePerson">Create New Person</a></div>
+<div class="accordion-button"><a asp-action="Details">Find Person</a>
+</div>
+<div><a asp-controller="City" asp-action="Index">City</a></div>
+<div><a asp-controller="Country" asp-action="Country">Country</a></div>
 <br />
 <div class="accordion-item">
     <table border="1" class="table">
@@ -14,6 +19,7 @@
                 <th>Name</th>
                 <th>Phone</th>
                 <th>City</th>
+               
 
             </tr>
         </thead>
@@ -24,7 +30,10 @@
                     <td>@people.PersonId</td>
                     <td>@people.Name</td>
                     <td>@people.Phone</td>
-                    <td>@people.City</td>
+                    <td>@people.CityId</td>
+                    
+                   
+                    
 
                     
                 </tr>

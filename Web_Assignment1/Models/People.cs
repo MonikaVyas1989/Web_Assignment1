@@ -17,7 +17,7 @@ namespace Web_Assignment1.Models
         private static int id_counter;
         public Person CreatePerson(string name, string phone, string city)
         {
-            Person newPerson = new Person(id_counter,name, phone, city);
+            Person newPerson = new Person(id_counter, name, phone, city);
             id_counter++;
             PeopleList.Add(newPerson);
             return newPerson;

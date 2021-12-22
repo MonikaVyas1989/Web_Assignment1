@@ -15,38 +15,34 @@ namespace Web_Assignment1.Models
         
         //public int ID { get { return id; } }
 
-        [Key]
+        
         public int PersonId { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        [MinLength(3)]
+       
         public string Name { get; set; }
-        [Required]
+        
         public string Phone { get; set; }
-        [Required]
-        [MaxLength(25)]
-        [MinLength(3)]
+        
         public string City { get; set; }
 
-
+       // public int CityId { get; set; }
         public Person()
         {
             
         }
-        public Person(int id,string name, string phone, string city)
+        public Person(int id, string name, string phone, string city)
         {
             //this.id = id;
             PersonId = id;
-             Name = name;
-             Phone = phone;
-             City = city;
+            Name = name;
+            Phone = phone;
+            City = city;
         }
 
 
 
-       
-       
+
+
 
 
     }
