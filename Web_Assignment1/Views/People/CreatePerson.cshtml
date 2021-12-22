@@ -6,7 +6,7 @@
 <h1>CreatePerson</h1>
 
 <div class="accordion-item">
-    <form asp-action="CreatePerson">
+    <form class="align-content-center" asp-action="CreatePerson">
         <div>
             <label asp-for="Name">Enter Name:</label>
             <input asp-for="Name" />
@@ -19,9 +19,11 @@
             <span style="color:red" asp-validation-for="CityId"></span><br /><br />
         </div>
         <div>
-            <input type="submit" value="Create Person" />
+            <input class="btn-close-white" type="submit" value="Create Person" />
         </div>
       
 
     </form>
 </div>
+<br />
+<div class="accordion-button"><a asp-action="PeopleView">Back</a></div>

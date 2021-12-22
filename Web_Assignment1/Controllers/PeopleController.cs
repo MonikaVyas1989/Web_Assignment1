@@ -21,8 +21,8 @@ namespace Web_Assignment1.Controllers
 
         public IActionResult PeopleView()
         {
-           
-        
+            
+
             List<PersonModel> List = dbContext.Persons.ToList();
             return View(List);
         }
@@ -43,17 +43,7 @@ namespace Web_Assignment1.Controllers
             }
             return View();
         }
-        public IActionResult Details()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Details(int id)
-        {
-            PersonModel person = dbContext.Persons.Include(p=>p.City).
-                Where(p => p.PersonId == id).FirstOrDefault();
-            return View(person);
-        }
+      
         public IActionResult PeopleIndex()
         {
             People person = new People();

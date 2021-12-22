@@ -1,17 +1,21 @@
 ﻿@using Web_Assignment1.Models
-@model IEnumerable<PersonModel>
+@model IEnumerable< PersonModel>
 @{
     ViewData["Title"] = "PeopleView";
 }
 
 <h1>PeopleView</h1>
 <div class="accordion-button"><a asp-action="CreatePerson">Create New Person</a></div>
-<div class="accordion-button"><a asp-action="Details">Find Person</a>
-</div>
-<div><a asp-controller="City" asp-action="Index">City</a></div>
-<div><a asp-controller="Country" asp-action="Country">Country</a></div>
-<br />
-<div class="accordion-item">
+@*<div class="accordion-button"><form asp-controller="People" asp-action="Details" method="post">
+    <label asp-for="PersonId">Enter City Id:</label>
+    <input asp-for="PersonId" />
+    <a asp-action="Details">Find Person</a>
+</form>
+</div>*@
+<div class="accordion-button"><a asp-controller="City" asp-action="Index">ListOFPeople</a></div>
+<div class="accordion-button"><a asp-controller="Country" asp-action="Country">ListOFCity</a></div>
+
+@*<div class="accordion-item">
     <table border="1" class="table">
         <thead>
             <tr>
@@ -41,7 +45,7 @@
         </tbody>
 
     </table>
-</div>
-<br />
+</div>*@
+
 <div class="accordion-button"><a asp-action="PeopleIndex">Back</a></div>
 <br />

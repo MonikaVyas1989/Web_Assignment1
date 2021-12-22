@@ -19,12 +19,10 @@ namespace Web_Assignment1.Controllers
         }
         public IActionResult Index()
         {
-            CityViewModel model = new CityViewModel();
-            PersonModel person = new PersonModel();
-            bool id = person.CityId==model.Id;
+           
             List<PersonModel> personList = dbContext.Persons.ToList(); 
-            //List<CityViewModel> city = dbContext.Cities.Include(c => c.Name).Where(c => c.Id == model.CityId).ToList();
             return View(personList);
         }
+        
     }
 }
