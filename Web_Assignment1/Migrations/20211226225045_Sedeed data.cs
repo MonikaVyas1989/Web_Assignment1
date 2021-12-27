@@ -2,46 +2,38 @@
 
 namespace Web_Assignment1.Migrations
 {
-    public partial class Seededatatables : Migration
+    public partial class Sedeeddata : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_CityViewModel_CountryViewModel_CountryId",
-                table: "CityViewModel");
+                name: "FK_City_Country_CountryId",
+                table: "City");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Persons_CityViewModel_CityId",
+                name: "FK_Persons_City_CityId",
                 table: "Persons");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_CountryViewModel",
-                table: "CountryViewModel");
+                name: "PK_Country",
+                table: "Country");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_CityViewModel",
-                table: "CityViewModel");
+                name: "PK_City",
+                table: "City");
 
             migrationBuilder.RenameTable(
-                name: "CountryViewModel",
+                name: "Country",
                 newName: "Countries");
 
             migrationBuilder.RenameTable(
-                name: "CityViewModel",
+                name: "City",
                 newName: "Cities");
 
             migrationBuilder.RenameIndex(
-                name: "IX_CityViewModel_CountryId",
+                name: "IX_City_CountryId",
                 table: "Cities",
                 newName: "IX_Cities_CountryId");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "CityId",
-                table: "Persons",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int",
-                oldNullable: true);
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Countries",
@@ -182,49 +174,42 @@ namespace Web_Assignment1.Migrations
 
             migrationBuilder.RenameTable(
                 name: "Countries",
-                newName: "CountryViewModel");
+                newName: "Country");
 
             migrationBuilder.RenameTable(
                 name: "Cities",
-                newName: "CityViewModel");
+                newName: "City");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Cities_CountryId",
-                table: "CityViewModel",
-                newName: "IX_CityViewModel_CountryId");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "CityId",
-                table: "Persons",
-                type: "int",
-                nullable: true,
-                oldClrType: typeof(int));
+                table: "City",
+                newName: "IX_City_CountryId");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_CountryViewModel",
-                table: "CountryViewModel",
+                name: "PK_Country",
+                table: "Country",
                 column: "Id");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_CityViewModel",
-                table: "CityViewModel",
+                name: "PK_City",
+                table: "City",
                 column: "Id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_CityViewModel_CountryViewModel_CountryId",
-                table: "CityViewModel",
+                name: "FK_City_Country_CountryId",
+                table: "City",
                 column: "CountryId",
-                principalTable: "CountryViewModel",
+                principalTable: "Country",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Persons_CityViewModel_CityId",
+                name: "FK_Persons_City_CityId",
                 table: "Persons",
                 column: "CityId",
-                principalTable: "CityViewModel",
+                principalTable: "City",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
         }
     }
 }

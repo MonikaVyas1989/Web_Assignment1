@@ -38,7 +38,7 @@ namespace Web_Assignment1
 
             services.AddDbContext<PeopleDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc();;
+            services.AddMvc();
             services.AddControllersWithViews();
         }
 

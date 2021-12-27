@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Web_Assignment1.Data;
 
 namespace Web_Assignment1.Controllers
-{
+{ 
     public class PeopleController : Controller
     {
         private readonly PeopleDbContext dbContext;

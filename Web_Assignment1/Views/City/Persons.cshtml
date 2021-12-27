@@ -1,0 +1,66 @@
+﻿@model CityViewModel
+@{
+    ViewData["Title"] = "Persons";
+}
+
+<h1>Persons</h1>
+
+
+<div class="accordion-item">
+    <table border="1" class="table">
+        <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Name</th>
+                <th>CityId</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var people in Model.People)
+            {
+                <tr>
+
+                    <td>@people.PersonId</td>
+                    <td>@people.Name</td>
+                    <td>@people.CityId</td>
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div><br />
+
+<div class="accordion-item">
+    <table border="1" class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>CountryId</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var city in Model.CityList)
+            {
+                <tr>
+                    <td>@city.Id</td>
+                    <td>@city.Name</td>
+                    <td>@city.CountryId</td>
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

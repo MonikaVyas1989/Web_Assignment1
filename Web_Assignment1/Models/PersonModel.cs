@@ -21,6 +21,8 @@ namespace Web_Assignment1.Models
 
         [Required]
         public int CityId { get; set; }
-        public CityViewModel City{ get; set; }
+        public City City{ get; set; }
+
+        //public List<PersonLanguage> People { get; set; }
     }
 }

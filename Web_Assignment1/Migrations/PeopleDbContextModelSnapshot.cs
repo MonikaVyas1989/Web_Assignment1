@@ -18,6 +18,88 @@ namespace Web_Assignment1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Web_Assignment1.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Cities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CountryId = 1,
+                            Name = "Varberg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CountryId = 1,
+                            Name = "Halmstad"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CountryId = 2,
+                            Name = "Oslo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CountryId = 3,
+                            Name = "Copenhagen"
+                        });
+                });
+
+            modelBuilder.Entity("Web_Assignment1.Models.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Sweden"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Norwe"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Denmark"
+                        });
+                });
+
             modelBuilder.Entity("Web_Assignment1.Models.PersonModel", b =>
                 {
                     b.Property<int>("PersonId")
@@ -74,102 +156,20 @@ namespace Web_Assignment1.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Web_Assignment1.ViewModels.CityViewModel", b =>
+            modelBuilder.Entity("Web_Assignment1.Models.City", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.ToTable("Cities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CountryId = 1,
-                            Name = "Varberg"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CountryId = 1,
-                            Name = "Halmstad"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CountryId = 2,
-                            Name = "Oslo"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CountryId = 3,
-                            Name = "Copenhagen"
-                        });
-                });
-
-            modelBuilder.Entity("Web_Assignment1.ViewModels.CountryViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Countries");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Sweden"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Norwe"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Denmark"
-                        });
-                });
-
-            modelBuilder.Entity("Web_Assignment1.Models.PersonModel", b =>
-                {
-                    b.HasOne("Web_Assignment1.ViewModels.CityViewModel", "City")
-                        .WithMany("People")
-                        .HasForeignKey("CityId")
+                    b.HasOne("Web_Assignment1.Models.Country", "Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Web_Assignment1.ViewModels.CityViewModel", b =>
+            modelBuilder.Entity("Web_Assignment1.Models.PersonModel", b =>
                 {
-                    b.HasOne("Web_Assignment1.ViewModels.CountryViewModel", "Country")
-                        .WithMany("Cities")
-                        .HasForeignKey("CountryId")
+                    b.HasOne("Web_Assignment1.Models.City", "City")
+                        .WithMany("People")
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -5,18 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20211213144155_Tables Added.cs" />
-    <Compile Remove="Migrations\20211213144155_Tables Added.Designer.cs" />
-    <Compile Remove="Migrations\20211213150116_Tables Added.cs" />
-    <Compile Remove="Migrations\20211213150116_Tables Added.Designer.cs" />
-    <Compile Remove="Migrations\20211213152723_update table.cs" />
-    <Compile Remove="Migrations\20211213152723_update table.Designer.cs" />
-    <Compile Remove="Migrations\20211213154856_Seede data tables.cs" />
-    <Compile Remove="Migrations\20211213154856_Seede data tables.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21">
       <PrivateAssets>all</PrivateAssets>

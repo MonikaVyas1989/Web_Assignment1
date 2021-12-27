@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Web_Assignment1.Data;
+using Web_Assignment1.Models;
 using Web_Assignment1.ViewModels;
 
 namespace Web_Assignment1.Controllers
@@ -18,8 +19,14 @@ namespace Web_Assignment1.Controllers
         }
         public IActionResult Country()
         {
-            List<CityViewModel> cityList = dbContext.Cities.ToList();
-            return View(cityList);
+            CountryViewModel countryView = new CountryViewModel()
+            {
+                CountryList = dbContext.Countries.ToList(),
+                Cities = dbContext.Cities.ToList()
+                
+            };
+            //List<City> cityList = dbContext.Cities.ToList();
+            return View(countryView);
         }
     }
 }

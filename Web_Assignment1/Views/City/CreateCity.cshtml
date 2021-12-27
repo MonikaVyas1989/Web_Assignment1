@@ -1,0 +1,30 @@
+﻿@model City;
+@{
+    ViewData["Title"] = "CreateCity";
+}
+
+<h1>CreateCity</h1>
+
+<div class="accordion-item">
+    <form class="align-content-center" asp-action="CreateCity">
+        <div>
+            <label asp-for="Id">Enter City Id:</label>
+            <input asp-for="Id" />
+            <span style="color:red" asp-validation-for="Id"></span><br /><br />
+            <label asp-for="Name">Enter Name:</label>
+            <input asp-for="Name" />
+            <span style="color:red" asp-validation-for="Name"></span> <br /><br />
+            <label asp-for="CountryId">Enter Phone:</label>
+            <input asp-for="CountryId" />
+            <span style="color:red" asp-validation-for="CountryId"></span><br /><br />
+
+        </div>
+        <div>
+            <input class="btn-close-white" type="submit" value="Create City" />
+        </div>
+
+
+    </form>
+</div>
+<br />
+<div class="accordion-button"><a asp-controller="City" asp-action="Index">Back</a></div>

@@ -1,5 +1,4 @@
-﻿@using Web_Assignment1.ViewModels
-@model IEnumerable<CityViewModel>
+﻿@model CountryViewModel
 @{
     ViewData["Title"] = "Country";
 }
@@ -17,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var city in Model)
+            @foreach (var city in Model.Cities)
             {
                 <tr>
                     <td>@city.Id</td>
@@ -27,6 +26,29 @@
 
 
 
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="accordion-item">
+    <table border="1" class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+               
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var country in Model.CountryList)
+            {
+                <tr>
+                    <td>@country.Id</td>
+                    <td>@country.Name</td>
 
                 </tr>
             }
