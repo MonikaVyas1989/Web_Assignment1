@@ -1,0 +1,41 @@
+﻿@model PersonViewModel
+@{
+    ViewData["Title"] = "Language";
+}
+
+<h1>Language</h1>
+
+<div class="accordion-item">
+    <table border="1" class="table">
+        <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>CityId</th>
+                @*<th>Delete</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var people in Model.Person)
+            {
+                <tr>
+
+                    <td>@people.PersonId</td>
+                    <td>@people.Name</td>
+                    <td>@people.Phone</td>
+                    <td>@people.CityId</td>
+                    
+                  @*  <td><input type="button" value="Delete" onclick="location.href = '@Url.Action("Delete","City",new { id = people.Id })'" /></td>*@
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="accordion-item"><a asp-controller="People" asp-action="PeopleView">Back</a></div>

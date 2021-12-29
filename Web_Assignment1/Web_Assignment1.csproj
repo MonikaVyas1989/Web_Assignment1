@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20211229142642_Some Seeded data.cs" />
+    <Compile Remove="Migrations\20211229142642_Some Seeded data.Designer.cs" />
+    <Compile Remove="Migrations\20211229143540_Some Seeded data.cs" />
+    <Compile Remove="Migrations\20211229143540_Some Seeded data.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.21">
       <PrivateAssets>all</PrivateAssets>

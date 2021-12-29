@@ -7,18 +7,12 @@ using Web_Assignment1.Models;
 
 namespace Web_Assignment1.ViewModels
 {
-    public class LanguageViewModel
+    public class LanguageViewModel:Language
     {
-        [Key]
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(25)]
-        [MinLength(3)]
-        public string Name { get; set; }
-
-        public List<PersonLanguage> People { get; set; }
-
+       public List<Language> Languages { get; set; }
+ 
+       
+        
         
     }
 }

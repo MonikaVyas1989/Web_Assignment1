@@ -14,6 +14,6 @@ namespace Web_Assignment1.Models
 
         public PersonModel Person { get; set; }
 
-        public LanguageViewModel Language { get; set; }
+        public Language Language { get; set; }
     }
 }

@@ -17,34 +17,18 @@ namespace Web_Assignment1.Controllers
         {
             dbContext = context;
         }
-        public IActionResult Index()
-        {
-            List<PersonModel> personList = dbContext.Persons.ToList(); 
-            return View(personList);
-        }
-        public IActionResult Persons()
-        {
-            CityViewModel cityView = new CityViewModel()
-            {
-
-                People = dbContext.Persons.ToList(),
-                CityList=dbContext.Cities.ToList()
-            };
-            return View(cityView);
-        }
+        
+       
         public IActionResult City()
         {
             CityViewModel cityView = new CityViewModel()
             {
-
+                People = dbContext.Persons.ToList(),
                 CityList = dbContext.Cities.ToList()
             };
             return View(cityView);
         }
-        public IActionResult CreateCity()
-        {
-            return View();
-        }
+        
 
         [HttpPost]
         public IActionResult CreateCity(City city)
@@ -56,6 +40,13 @@ namespace Web_Assignment1.Controllers
                 return RedirectToAction("City");
             }
             return View();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            dbContext.Cities.Remove(dbContext.Cities.Find(id));
+            dbContext.SaveChanges();
+            return RedirectToAction("City");
         }
 
     }

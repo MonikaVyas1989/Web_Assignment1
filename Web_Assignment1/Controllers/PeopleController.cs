@@ -21,11 +21,15 @@ namespace Web_Assignment1.Controllers
 
         public IActionResult PeopleView()
         {
-            
 
-            List<PersonModel> List = dbContext.Persons.ToList();
-            return View(List);
+            LanguageViewModel languageView = new LanguageViewModel()
+            {
+                Languages = dbContext.Languages.ToList()
+            };
+            return View(languageView);
+            
         }
+       
 
         public IActionResult CreatePerson()
         {
@@ -43,7 +47,18 @@ namespace Web_Assignment1.Controllers
             }
             return View();
         }
+        
+        
+        public IActionResult Delete(int id)
+        {
+            dbContext.Persons.Remove(dbContext.Persons.Find(id));
+            dbContext.SaveChanges();
+            return RedirectToAction("PeopleView");
+        }
       
+       
+      
+       
         public IActionResult PeopleIndex()
         {
             People person = new People();

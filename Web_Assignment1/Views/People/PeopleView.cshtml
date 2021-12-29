@@ -1,51 +1,79 @@
-﻿@using Web_Assignment1.Models
-@model IEnumerable< PersonModel>
+﻿@using Web_Assignment1.ViewModels
+@model LanguageViewModel
 @{
     ViewData["Title"] = "PeopleView";
 }
 
 <h1>PeopleView</h1>
-<div class="accordion-button"><a asp-action="CreatePerson">Create New Person</a></div>
-@*<div class="accordion-button"><form asp-controller="People" asp-action="Details" method="post">
-    <label asp-for="PersonId">Enter City Id:</label>
-    <input asp-for="PersonId" />
-    <a asp-action="Details">Find Person</a>
-</form>
-</div>*@
-<div class="accordion-button"><a asp-controller="City" asp-action="Index">ListOFPeople</a></div>
-<div class="accordion-button"><a asp-controller="Country" asp-action="Country">ListOFCity</a></div>
+<div class="accordion-button">
+    <a asp-action="CreatePerson">Create New Person</a>
+    <a asp-controller="City" asp-action="City">City</a>
+    <a asp-controller="Country" asp-action="Country">Country</a>
+    <a asp-controller="Language" asp-action="Language">Language</a>
+</div><br />
 
-@*<div class="accordion-item">
+
+<div class="accordion-item">
     <table border="1" class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>City</th>
-               
 
+                
+                <th>LanguageId</th>
+                <th>Name</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var people in Model)
+            @foreach (var language in Model.Languages)
             {
                 <tr>
-                    <td>@people.PersonId</td>
-                    <td>@people.Name</td>
-                    <td>@people.Phone</td>
-                    <td>@people.CityId</td>
-                    
-                   
-                    
 
-                    
+                    <td>@language.Id</td>
+                    <td>@language.Name</td>
+                   
+                   
+
+
+
+
                 </tr>
             }
         </tbody>
-
     </table>
-</div>*@
+</div>
+<br />
+
+@*<div class="accordion-item">
+        <table border="1" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                   <th>Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var people in Model)
+                {
+                    <tr>
+                        <td>@people.PersonId</td>
+                        <td>@people.Name</td>
+                        <td>@people.Phone</td>
+                        <td>@people.CityId</td>
+                        <td><input type="button" value="Delete" onclick="location.href = '@Url.Action("Delete","People",new { id = people.PersonId })'"/></td>
+
+
+
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>*@
 
 <div class="accordion-button"><a asp-action="PeopleIndex">Back</a></div>
 <br />

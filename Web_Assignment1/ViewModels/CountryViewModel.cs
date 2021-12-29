@@ -21,3 +21,4 @@ namespace Web_Assignment1.ViewModels
         //public List<City> CityList { get; set; }
     }
 }
+ 

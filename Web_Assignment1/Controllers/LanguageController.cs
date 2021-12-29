@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Web_Assignment1.Data;
+using Web_Assignment1.ViewModels;
+using Web_Assignment1.Models;
 
 namespace Web_Assignment1.Controllers
 {
@@ -17,8 +19,11 @@ namespace Web_Assignment1.Controllers
         }
         public IActionResult Language()
         {
-            
-            return View();
+            PersonViewModel personView = new PersonViewModel()
+            {
+                Person= dbContext.Persons.ToList()
+            };
+            return View(personView);
         }
     }
 }

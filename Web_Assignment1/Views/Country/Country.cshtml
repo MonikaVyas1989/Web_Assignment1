@@ -4,6 +4,22 @@
 }
 
 <h1>Country</h1>
+
+<div class="accordion-item">
+    <form class="align-content-center" asp-action="CreateCountry" method="post">
+        <div>
+            <label asp-for="Name">Enter Name:</label>
+            <input asp-for="Name" />
+            <span style="color:red" asp-validation-for="Name"></span> <br /><br />
+        </div>
+        <div>
+            <input class="btn-close-white" type="submit" value="Add Country" />
+        </div>
+
+
+    </form>
+</div>
+<br />
 <div class="accordion-item">
     <table border="1" class="table">
         <thead>
@@ -11,7 +27,8 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>CountryId</th>
-                
+
+
 
             </tr>
         </thead>
@@ -22,7 +39,7 @@
                     <td>@city.Id</td>
                     <td>@city.Name</td>
                     <td>@city.CountryId</td>
-                    
+
 
 
 
@@ -38,7 +55,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-               
+                <th>Delete</th>
 
 
             </tr>
@@ -46,11 +63,11 @@
         <tbody>
             @foreach (var country in Model.CountryList)
             {
-                <tr>
-                    <td>@country.Id</td>
-                    <td>@country.Name</td>
-
-                </tr>
+            <tr>
+                <td>@country.Id</td>
+                <td>@country.Name</td>
+                <td><input type="button" value="Delete" onclick="location.href = '@Url.Action("Delete","Country",new { id = country.Id })'" /></td>
+            </tr>
             }
         </tbody>
     </table>

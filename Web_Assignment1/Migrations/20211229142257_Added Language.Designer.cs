@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_Assignment1.Data;
 
 namespace Web_Assignment1.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    partial class PeopleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211229142257_Added Language")]
+    partial class AddedLanguage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,23 +117,6 @@ namespace Web_Assignment1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Languages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Swedish"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Denish"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Norwegian"
-                        });
                 });
 
             modelBuilder.Entity("Web_Assignment1.Models.PersonLanguage", b =>
@@ -147,28 +132,6 @@ namespace Web_Assignment1.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("PersonLanguages");
-
-                    b.HasData(
-                        new
-                        {
-                            LanguageId = 1,
-                            PersonId = 1
-                        },
-                        new
-                        {
-                            LanguageId = 1,
-                            PersonId = 2
-                        },
-                        new
-                        {
-                            LanguageId = 1,
-                            PersonId = 3
-                        },
-                        new
-                        {
-                            LanguageId = 3,
-                            PersonId = 1
-                        });
                 });
 
             modelBuilder.Entity("Web_Assignment1.Models.PersonModel", b =>

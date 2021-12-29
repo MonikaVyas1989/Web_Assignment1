@@ -28,5 +28,28 @@ namespace Web_Assignment1.Controllers
             //List<City> cityList = dbContext.Cities.ToList();
             return View(countryView);
         }
+        //public IActionResult CreateCountry()
+        //{
+        //    return View();
+        //}
+
+        [HttpPost]
+        public IActionResult CreateCountry(Country country)
+        {
+            if (ModelState.IsValid)
+            {
+                dbContext.Countries.Add(country);
+                dbContext.SaveChanges();
+                return RedirectToAction("Country");
+            }
+            return View();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            dbContext.Countries.Remove(dbContext.Countries.Find(id));
+            dbContext.SaveChanges();
+            return RedirectToAction("Country");
+        }
     }
 }
