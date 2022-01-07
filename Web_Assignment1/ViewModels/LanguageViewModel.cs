@@ -11,7 +11,7 @@ namespace Web_Assignment1.ViewModels
     {
        public List<Language> Languages { get; set; }
  
-       
+       public List<PersonLanguage> PersonLanguages { get; set; }
         
         
     }

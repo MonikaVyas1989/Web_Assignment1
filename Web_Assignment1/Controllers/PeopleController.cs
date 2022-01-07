@@ -24,10 +24,27 @@ namespace Web_Assignment1.Controllers
 
             LanguageViewModel languageView = new LanguageViewModel()
             {
-                Languages = dbContext.Languages.ToList()
+                Languages = dbContext.Languages.ToList(),
+                PersonLanguages = dbContext.PersonLanguages.ToList()
             };
             return View(languageView);
             
+        }
+
+        public IActionResult AddLanguage()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddLanguage(PersonLanguage personlanguage)
+        {
+            if (ModelState.IsValid)
+            {
+                dbContext.PersonLanguages.Add(personlanguage);
+                dbContext.SaveChanges();
+                return RedirectToAction("PeopleView");
+            }
+            return View();
         }
        
 
@@ -47,17 +64,35 @@ namespace Web_Assignment1.Controllers
             }
             return View();
         }
-        
-        
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            PersonModel person = dbContext.Persons.Find(id);
+           
+            return View(person);
+        }
+        [HttpPost]
+        public IActionResult Edit(PersonModel person)
+        {
+            if(ModelState.IsValid)
+            {
+                dbContext.Entry(person).State = EntityState.Modified;
+                dbContext.SaveChanges();
+                return RedirectToAction("PeopleView");
+                
+
+            }
+
+            return View();
+        }
+
         public IActionResult Delete(int id)
         {
             dbContext.Persons.Remove(dbContext.Persons.Find(id));
             dbContext.SaveChanges();
             return RedirectToAction("PeopleView");
         }
-      
        
-      
        
         public IActionResult PeopleIndex()
         {

@@ -3,3 +3,19 @@
     ViewData["Title"] = "Index";
 }
 <h1>Welcome to my First MVC Assignment</h1>
+@if (User.IsInRole("Admin"))
+{
+    <p>Hello Admin</p>
+}
+@if (User.IsInRole("User"))
+{
+    <p>Hello User</p>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello Logged in</p>
+}
+@if (!User.Identity.IsAuthenticated)
+{
+    <p>Hello not logged in</p>
+}

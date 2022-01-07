@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ using Web_Assignment1.ViewModels;
 
 namespace Web_Assignment1.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CountryController : Controller
     {
         private readonly PeopleDbContext dbContext;
@@ -44,7 +47,27 @@ namespace Web_Assignment1.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Country country = dbContext.Countries.Find(id);
 
+            return View(country);
+        }
+        [HttpPost]
+        public IActionResult Edit(Country country)
+        {
+            if (ModelState.IsValid)
+            {
+                dbContext.Entry(country).State = EntityState.Modified;
+                dbContext.SaveChanges();
+                return RedirectToAction("Country");
+
+
+            }
+
+            return View();
+        }
         public IActionResult Delete(int id)
         {
             dbContext.Countries.Remove(dbContext.Countries.Find(id));

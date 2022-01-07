@@ -9,9 +9,17 @@
     <Compile Remove="Migrations\20211229142642_Some Seeded data.Designer.cs" />
     <Compile Remove="Migrations\20211229143540_Some Seeded data.cs" />
     <Compile Remove="Migrations\20211229143540_Some Seeded data.Designer.cs" />
+    <Compile Remove="Migrations\20220103130434_Added User.cs" />
+    <Compile Remove="Migrations\20220103130434_Added User.Designer.cs" />
+    <Compile Remove="Migrations\20220103130618_AddedToUser.cs" />
+    <Compile Remove="Migrations\20220103130618_AddedToUser.Designer.cs" />
+    <Compile Remove="Migrations\20220103212818_Added Role and User.cs" />
+    <Compile Remove="Migrations\20220103212818_Added Role and User.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.21">
       <PrivateAssets>all</PrivateAssets>
@@ -22,6 +30,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.21" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 

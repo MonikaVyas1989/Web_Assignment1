@@ -1,0 +1,27 @@
+﻿@model PersonLanguage
+@{
+    ViewData["Title"] = "AddLanguage";
+}
+
+<h1>AddLanguage</h1>
+
+<div class="accordion-item">
+    <form class="align-content-center" asp-contorller="People" asp-action="AddLanguage" method="post">
+        <div>
+            <label asp-for="PersonId">Enter PersonId:</label>
+            <input asp-for="PersonId" />
+            <span style="color:red" asp-validation-for="PersonId"></span> <br /><br />
+            <label asp-for="LanguageId">Enter LanguageId:</label>
+            <input asp-for="LanguageId" />
+            <span style="color:red" asp-validation-for="LanguageId"></span><br /><br />
+
+        </div>
+        <div>
+            <input class="btn-close-white" type="submit" value="Add Language for Person" />
+        </div>
+
+
+    </form>
+</div><br />
+
+<div class="accordion-button"><a asp-action="PeopleView">Back</a></div>

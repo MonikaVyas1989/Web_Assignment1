@@ -7,10 +7,13 @@
 <h1>PeopleView</h1>
 <div class="accordion-button">
     <a asp-action="CreatePerson">Create New Person</a>
+    <a asp-action="Edit">EditPerson</a>
+    <a asp-action="Detail">PersonDetail</a>
     <a asp-controller="City" asp-action="City">City</a>
     <a asp-controller="Country" asp-action="Country">Country</a>
     <a asp-controller="Language" asp-action="Language">Language</a>
-</div><br />
+</div>
+<br />
 
 
 <div class="accordion-item">
@@ -18,7 +21,7 @@
         <thead>
             <tr>
 
-                
+
                 <th>LanguageId</th>
                 <th>Name</th>
             </tr>
@@ -30,8 +33,8 @@
 
                     <td>@language.Id</td>
                     <td>@language.Name</td>
-                   
-                   
+
+
 
 
 
@@ -43,37 +46,65 @@
 </div>
 <br />
 
-@*<div class="accordion-item">
-        <table border="1" class="table">
-            <thead>
+<div class="accordion-item">
+    <table border="1" class="table">
+        <thead>
+            <tr>
+
+
+                <th>PersonId</th>
+                <th>LanguageId</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var personlanguage in Model.PersonLanguages)
+            {
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>City</th>
-                   <th>Delete</th>
 
+                    <td>@personlanguage.PersonId</td>
+                    <td>@personlanguage.LanguageId</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var people in Model)
-                {
-                    <tr>
-                        <td>@people.PersonId</td>
-                        <td>@people.Name</td>
-                        <td>@people.Phone</td>
-                        <td>@people.CityId</td>
-                        <td><input type="button" value="Delete" onclick="location.href = '@Url.Action("Delete","People",new { id = people.PersonId })'"/></td>
-
-
-
-
-                    </tr>
-                }
-            </tbody>
-
-        </table>
-    </div>*@
-
-<div class="accordion-button"><a asp-action="PeopleIndex">Back</a></div>
+            }
+        </tbody>
+    </table>
+</div>
 <br />
+<div class="accordion-button" ><a asp-action="AddLanguage">AddLanguage for Person</a></div>
+
+
+
+
+            @*<div class="accordion-item">
+                    <table border="1" class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                               <th>Delete</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var people in Model)
+                            {
+                                <tr>
+                                    <td>@people.PersonId</td>
+                                    <td>@people.Name</td>
+                                    <td>@people.Phone</td>
+                                    <td>@people.CityId</td>
+                                    <td><input type="button" value="Delete" onclick="location.href = '@Url.Action("Delete","People",new { id = people.PersonId })'"/></td>
+
+
+
+
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>*@
+
+            <div class="accordion-button"><a asp-action="PeopleIndex">Back</a></div>
+            <br />

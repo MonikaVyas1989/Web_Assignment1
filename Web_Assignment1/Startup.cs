@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Web_Assignment1.Data;
 using Microsoft.EntityFrameworkCore;
+using Web_Assignment1.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Web_Assignment1
 {
@@ -38,6 +40,14 @@ namespace Web_Assignment1
 
             services.AddDbContext<PeopleDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<PeopleDbContext>();
+
+
+            services.AddRazorPages();
             services.AddMvc();
             services.AddControllersWithViews();
         }
@@ -53,6 +63,9 @@ namespace Web_Assignment1
             app.UseStaticFiles();
             app.UseRouting();
             app.UseSession();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -79,7 +92,7 @@ namespace Web_Assignment1
                    pattern: "/PeopleIndex",
                    defaults: new { Controller = "People", action = "PeopleIndex" }
                    );
-
+                endpoints.MapRazorPages();
                 //endpoints.MapControllerRoute(
                 //   name: "Ajax",
                 //   pattern: "/Ajax",

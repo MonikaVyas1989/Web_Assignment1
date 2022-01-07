@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using Web_Assignment1.ViewModels;
 
 namespace Web_Assignment1.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CityController : Controller
     {
         private readonly PeopleDbContext dbContext;
@@ -39,6 +41,28 @@ namespace Web_Assignment1.Controllers
                 dbContext.SaveChanges();
                 return RedirectToAction("City");
             }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            City city = dbContext.Cities.Find(id);
+
+            return View(city);
+        }
+        [HttpPost]
+        public IActionResult Edit(City city)
+        {
+            if (ModelState.IsValid)
+            {
+                dbContext.Entry(city).State = EntityState.Modified;
+                dbContext.SaveChanges();
+                return RedirectToAction("City");
+
+
+            }
+
             return View();
         }
 
