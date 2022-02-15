@@ -1,7 +1,7 @@
-﻿////import { extend } from "jquery";
+﻿import { extend } from "jquery";
 import * as React from "react";
 
-//const { Component } = require("react");
+const { Component } = require("react");
 
 class TableHeader extends React.Component {
     render() {
@@ -10,7 +10,7 @@ class TableHeader extends React.Component {
                 <tr>
                 <th>Name</th>
                 <th>Phone</th> 
-                <th>Details</th>
+                {/*<th>Details</th>*/}
                 </tr>
             </thead>
         );
@@ -38,13 +38,14 @@ class TableBody extends React.Component {
 }
 class Table extends React.Component {
 
-    state = {
+   state = {
         people: [],
         isLoaded: false
     };
 
-    componentDidMount() {
-        fetch("React/GetPeople").then(result => result.json())
+    componentDidMount() { this.getPeople() }
+    getPeople=()=>{
+        fetch("/React/GetPeople").then(response => response.json())
             .then((result1) => {
                 this.setState({
                     isLoaded: true,
@@ -56,7 +57,7 @@ class Table extends React.Component {
         return (
             <table className="table table-bordered">
                 <TableHeader />
-                <TableBody />
+                <TableBody people={people} />
             </table>
         );
     }

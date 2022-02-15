@@ -1,13 +1,11 @@
 ﻿import Table from "./PeopleList.jsx";
-
-
-
+   
 class People extends React.Component {
     render() {
-        console.log("load app")
+        console.log("load app");
         return (
-            
-            <div>
+
+            <div className="people">
             <Table />
             </div>
                 
