@@ -12,6 +12,10 @@ using Web_Assignment1.Data;
 using Microsoft.EntityFrameworkCore;
 using Web_Assignment1.Models;
 using Microsoft.AspNetCore.Identity;
+using JavaScriptEngineSwitcher.V8;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using React.AspNet;
+
 
 namespace Web_Assignment1
 {
@@ -50,6 +54,10 @@ namespace Web_Assignment1
             services.AddRazorPages();
             services.AddMvc();
             services.AddControllersWithViews();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+            services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
+                .AddV8();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +74,10 @@ namespace Web_Assignment1
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseReact(config =>
+                {
+                    //config.AddScript("file");
+                });
 
             app.UseEndpoints(endpoints =>
             {
