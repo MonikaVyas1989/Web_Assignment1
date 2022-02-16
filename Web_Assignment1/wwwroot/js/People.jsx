@@ -81,8 +81,8 @@ class People extends React.Component {
         data.append('name', person.name);
         data.append('phone', person.phone);
         data.append('cityId', person.cityId);
-        for (var i = 0; i < person.languages.length; i++) {
-            data.append("languages[]", person.languages[i]);
+        for (var i = 0; i < person.languageId.length; i++) {
+            data.append('Languages[]', person.languageId[i]);
         }
         //data.append('languageId', person.languageId);
         fetch("/React/CreatePerson",

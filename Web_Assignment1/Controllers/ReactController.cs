@@ -62,16 +62,32 @@ namespace Web_Assignment1.Controllers
         }
 
         [HttpPut]
-        public IActionResult CreatePerson(PersonModel person)
+        public IActionResult CreatePerson(PersonCreateViewModel person)
         {
             if (ModelState.IsValid)
             {
-                dbContext.Persons.Add(person);
+                var newPerson = new PersonModel
+                {
+                    Name = person.Name,
+                    Phone = person.Phone,
+                    CityId = person.CityId,
+                };
+                dbContext.Persons.Add(newPerson);
+                dbContext.SaveChanges();
+                foreach (var languageId in person.Languages)
+                {
+                    dbContext.PersonLanguages.Add(new PersonLanguage
+                    {
+                        PersonId = newPerson.PersonId,
+                        LanguageId = int.Parse(languageId)
+                    });
+
+                }
+                //dbContext.SaveChanges();
                 dbContext.SaveChanges();
 
-                return Ok(Json(
-                    person
-                ).Value);
+                return GetPerson(newPerson.PersonId);
+                    
             }
 
             return BadRequest();
