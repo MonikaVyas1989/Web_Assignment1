@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Web_Assignment1.Data;
 using Web_Assignment1.Models;
 using Web_Assignment1.ViewModels;
+using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web_Assignment1.Controllers
 {
@@ -31,7 +33,35 @@ namespace Web_Assignment1.Controllers
             return Json(dbContext.Persons);
         }
 
-        [HttpPost]
+        [HttpGet]
+        public IActionResult GetPerson(int id)
+        {
+            ReactDetailViewModel reactDetailView = new ReactDetailViewModel();
+            var person = dbContext.Persons.Include(p => p.City).Include(p => p.People)
+                .Where(p => p.PersonId == id).SingleOrDefault();
+            reactDetailView.personId = person.PersonId;
+            reactDetailView.Name = person.Name;
+            reactDetailView.Phone = person.Phone;
+            reactDetailView.City = person.City.Name;
+            var country = dbContext.Countries.Find(person.City.CountryId);
+            reactDetailView.Country = country.Name;
+            if (person.People != null)
+            {
+                foreach (var language in person.People)
+                {
+                    foreach (var name in dbContext.Languages)
+                    {
+                        if (language.LanguageId.Equals(name.Id))
+                        { reactDetailView.Language.Add(name.Name); }
+                    }
+                }
+
+            }
+
+            return Json(reactDetailView);
+        }
+
+        [HttpPut]
         public IActionResult CreatePerson(PersonModel person)
         {
             if (ModelState.IsValid)
@@ -39,12 +69,56 @@ namespace Web_Assignment1.Controllers
                 dbContext.Persons.Add(person);
                 dbContext.SaveChanges();
 
-                return Ok();
+                return Ok(Json(
+                    person
+                ).Value);
             }
 
             return BadRequest();
-            
-            
+        }
+
+        [HttpDelete]
+        public IActionResult DeletePerson(int id)
+        {
+            try
+            {
+                var person = dbContext.Persons.First(person => person.PersonId.Equals(id));
+                dbContext.Persons.Remove(person);
+                dbContext.SaveChanges();
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+
+        
+       
+
+        [HttpGet]
+        public IActionResult GetFormData()
+        {
+            var countries = dbContext.Cities
+               .Include(city => city.Country)
+               .ToList()
+               .GroupBy(city => city.Country.Name)
+               .Select(x => new
+               {
+                   name = x.Key,
+                   cities = x.Select(city => new
+                   {
+                       Id = city.Id,
+                       Name = city.Name
+                   })
+               });
+
+            return Json(new
+            {
+                countries = countries,
+                languages = dbContext.Languages,
+            });
         }
     }
 }
